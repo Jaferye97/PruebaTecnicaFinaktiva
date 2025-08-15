@@ -12,11 +12,11 @@ namespace ReporitorySqlServer.Repositories.Interfaces
 
         Task<List<TModel>> GetAllByIdAsync(IEnumerable<TPrimary> ids);
 
-        void Add(TModel model);
+        Task<TEntity> Add(TModel model);
 
-        void Add(IEnumerable<TModel> models);
+        Task<IEnumerable<TEntity>> Add(IEnumerable<TModel> models);
 
-        void Update(TModel model);
+        Task<TEntity> Update(TModel model);
 
         void Update(IEnumerable<TModel> models);
 
