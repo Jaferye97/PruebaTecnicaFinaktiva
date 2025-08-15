@@ -14,5 +14,6 @@ namespace ReporitorySqlServer.Context
         { }
 
         public DbSet<CustomersEntity> Customer { get; set; }
+        public DbSet<EventLogsEntity> EventLog { get; set; }
     }
 }

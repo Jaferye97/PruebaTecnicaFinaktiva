@@ -1,6 +1,8 @@
 using Application.Ports;
 using Application.UseCases.Customers;
 using Application.UseCases.Customers.Interfaces;
+using Application.UseCases.EventLogs;
+using Application.UseCases.EventLogs.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using ReporitorySqlServer.Context;
 using ReporitorySqlServer.Repositories;
@@ -23,8 +25,13 @@ builder.Services.AddScoped<IGetCustomersUseCase, GetCustomersUseCase>();
 builder.Services.AddScoped<IGetCustomerByIdUseCase, GetCustomerByIdUseCase>();
 builder.Services.AddScoped<IAddCustomerUseCase, AddCustomerUseCase>();
 builder.Services.AddScoped<IUpdateCustomerUseCase, UpdateCustomerUseCase>();
+builder.Services.AddScoped<IGetEventLogsUseCase, GetEventLogsUseCase>();
+builder.Services.AddScoped<IGetEventLogByIdUseCase, GetEventLogByIdUseCase>();
+builder.Services.AddScoped<IAddEventLogUseCase, AddEventLogUseCase>();
+builder.Services.AddScoped<IUpdateEventLogUseCase, UpdateEventLogUseCase>();
 
 builder.Services.AddScoped<ICustomersRepositorySqlServerPort, CustomersRepository>();
+builder.Services.AddScoped<IEventLogsRepositorySqlServerPort, EventLogsRepository>();
 
 var app = builder.Build();
 
