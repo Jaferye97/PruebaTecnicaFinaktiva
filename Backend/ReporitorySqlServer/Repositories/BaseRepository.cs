@@ -43,52 +43,64 @@ namespace ReporitorySqlServer.Repositories
             return entities.Select(_toModel).ToList();
         }
 
-        public virtual async Task<TEntity> Add(TModel model)
+        public virtual async Task<TEntity> AddAsync(TModel model)
         {
             var entity = _toEntity(model);
             _dbSet.Add(entity);
 
+            await _context.SaveChangesAsync();
+
             return entity;
         }
 
-        public virtual async Task<IEnumerable<TEntity>> Add(IEnumerable<TModel> models)
+        public virtual async Task<IEnumerable<TEntity>> AddAsync(IEnumerable<TModel> models)
         {
             var entities = models.Select(_toEntity);
             _dbSet.AddRange(entities);
 
+            await _context.SaveChangesAsync();
+
             return entities;
         }
 
-        public virtual async Task<TEntity> Update(TModel model)
+        public virtual async Task<TEntity> UpdateAsync(TModel model)
         {
             var entity = _toEntity(model);
             _context.Attach(entity).State = EntityState.Modified;
 
+            await _context.SaveChangesAsync();
+
             return entity;
         }
 
-        public void Update(IEnumerable<TModel> models)
+        public async Task UpdateAsync(IEnumerable<TModel> models)
         {
             foreach (var model in models)
             {
                 var entity = _toEntity(model);
                 _context.Attach(entity).State = EntityState.Modified;
             }
+
+            await _context.SaveChangesAsync();
         }
 
-        public void Delete(TModel model)
+        public async Task DeleteAsync(TModel model)
         {
             var entity = _toEntity(model);
             _context.Attach(entity).State = EntityState.Deleted;
+
+            await _context.SaveChangesAsync();
         }
 
-        public void Delete(IEnumerable<TModel> models)
+        public async Task DeleteAsync(IEnumerable<TModel> models)
         {
             foreach (var model in models)
             {
                 var entity = _toEntity(model);
                 _context.Attach(entity).State = EntityState.Deleted;
             }
+
+            await _context.SaveChangesAsync();
         }
 
         public async Task<List<TModel>> GetWithPredicateAsync(Expression<Func<TEntity, bool>> predicate)

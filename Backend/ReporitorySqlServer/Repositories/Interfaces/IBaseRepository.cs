@@ -12,17 +12,17 @@ namespace ReporitorySqlServer.Repositories.Interfaces
 
         Task<List<TModel>> GetAllByIdAsync(IEnumerable<TPrimary> ids);
 
-        Task<TEntity> Add(TModel model);
+        Task<TEntity> AddAsync(TModel model);
 
-        Task<IEnumerable<TEntity>> Add(IEnumerable<TModel> models);
+        Task<IEnumerable<TEntity>> AddAsync(IEnumerable<TModel> models);
 
-        Task<TEntity> Update(TModel model);
+        Task<TEntity> UpdateAsync(TModel model);
 
-        void Update(IEnumerable<TModel> models);
+        Task UpdateAsync(IEnumerable<TModel> models);
 
-        void Delete(TModel model);
+        Task DeleteAsync(TModel model);
 
-        void Delete(IEnumerable<TModel> models);
+        Task DeleteAsync(IEnumerable<TModel> models);
 
         Task<List<TModel>> GetWithPredicateAsync(Expression<Func<TEntity, bool>> predicate);
 
