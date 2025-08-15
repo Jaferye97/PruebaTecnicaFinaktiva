@@ -13,7 +13,7 @@ namespace Application.UseCases.EventLogs
             _repository = repository;
         }
 
-        public async Task<EventLogsModel> ExecuteAsync(int id)
+        public async Task<EventLogsModel> ExecuteAsync(Guid id)
         {
             return await _repository.GetAsync(id);
         }

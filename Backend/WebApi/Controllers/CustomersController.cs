@@ -30,7 +30,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetAsync([FromRoute] int id)
+        public async Task<IActionResult> GetAsync([FromRoute] Guid id)
         {
             var result = await _getCustomersByIdUseCase.ExecuteAsync(id);
             return Ok(result);

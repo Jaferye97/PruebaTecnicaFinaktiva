@@ -13,7 +13,7 @@ namespace Application.UseCases.Customers
             _repository = repository;
         }
 
-        public async Task<CustomersModel> ExecuteAsync(int id)
+        public async Task<CustomersModel> ExecuteAsync(Guid id)
         {
             return await _repository.GetAsync(id);
         }

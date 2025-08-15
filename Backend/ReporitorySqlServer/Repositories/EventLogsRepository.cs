@@ -6,13 +6,13 @@ using ReporitorySqlServer.Mappers;
 
 namespace ReporitorySqlServer.Repositories
 {
-    public class EventLogsRepository : BaseRepository<EventLogsEntity, EventLogsModel, int>, IEventLogsRepositorySqlServerPort
+    public class EventLogsRepository : BaseRepository<EventLogsEntity, EventLogsModel, Guid>, IEventLogsRepositorySqlServerPort
     {
         public EventLogsRepository(EntityDbContext context) : base(context, entity => entity.ToDomain(), entity => entity.ToEntity())
         {
         }
 
-        public async Task<EventLogsModel> GetAsync(int id) => await base.GetAsync(id);
+        public async Task<EventLogsModel> GetAsync(Guid id) => await base.GetAsync(id);
 
         public async Task<IEnumerable<EventLogsModel>> GetAsync() => await base.GetAsync();
 
