@@ -43,22 +43,28 @@ namespace ReporitorySqlServer.Repositories
             return entities.Select(_toModel).ToList();
         }
 
-        public virtual void Add(TModel model)
+        public virtual async Task<TEntity> Add(TModel model)
         {
             var entity = _toEntity(model);
             _dbSet.Add(entity);
+
+            return entity;
         }
 
-        public virtual void Add(IEnumerable<TModel> models)
+        public virtual async Task<IEnumerable<TEntity>> Add(IEnumerable<TModel> models)
         {
             var entities = models.Select(_toEntity);
             _dbSet.AddRange(entities);
+
+            return entities;
         }
 
-        public virtual void Update(TModel model)
+        public virtual async Task<TEntity> Update(TModel model)
         {
             var entity = _toEntity(model);
             _context.Attach(entity).State = EntityState.Modified;
+
+            return entity;
         }
 
         public void Update(IEnumerable<TModel> models)
