@@ -3,9 +3,11 @@ using Application.UseCases.Customers;
 using Application.UseCases.Customers.Interfaces;
 using Application.UseCases.EventLogs;
 using Application.UseCases.EventLogs.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ReporitorySqlServer.Context;
 using ReporitorySqlServer.Repositories;
+using WebApi.ActionFilters;
 using WebApi.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +23,13 @@ builder.Services.AddDbContext<EntityDbContext>(options =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add<EventLogActionFilter>();
+});
+
+builder.Services.AddScoped<EventLogActionFilter>();
 
 builder.Services.AddScoped<IGetCustomersUseCase, GetCustomersUseCase>();
 builder.Services.AddScoped<IGetCustomerByIdUseCase, GetCustomerByIdUseCase>();
