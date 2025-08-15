@@ -26,7 +26,7 @@ namespace ReporitorySqlServer.Mappers
             ExceptionMessage = domain.ExceptionMessage,
             ReferenceEntity = domain.ReferenceEntity,
             ReferenceId = domain.ReferenceId,
-            CreatedAt = DateTime.Now
+            CreatedAt = domain.CreatedAt,
         };
     }
 }

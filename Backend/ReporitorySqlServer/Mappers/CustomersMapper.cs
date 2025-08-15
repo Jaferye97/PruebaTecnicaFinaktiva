@@ -18,7 +18,7 @@ namespace ReporitorySqlServer.Mappers
             Id = domain.Id,
             Name = domain.Name,
             Email = domain.Email,
-            CreatedAt = DateTime.Now
+            CreatedAt = domain.CreatedAt,
         };
     }
 }
