@@ -6,6 +6,7 @@ using Application.UseCases.EventLogs.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using ReporitorySqlServer.Context;
 using ReporitorySqlServer.Repositories;
+using WebApi.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -52,7 +53,10 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseDeveloperExceptionPage(); // solo en dev
 }
+
+app.UseMiddleware<ExceptionLoggingMiddleware>();
 
 app.UseHttpsRedirection();
 
