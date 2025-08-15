@@ -23,7 +23,7 @@ export class SidebarComponent {
         {
           title: 'Customer List',
           key: 'customer-list',
-          route: '',
+          route: 'customers/',
         },
       ],
     },
