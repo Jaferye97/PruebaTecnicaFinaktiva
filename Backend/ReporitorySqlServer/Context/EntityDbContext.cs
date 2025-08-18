@@ -28,6 +28,10 @@ namespace ReporitorySqlServer.Context
 
                         entry.Property("CreatedAt").CurrentValue = localNow;
                         break;
+
+                    case EntityState.Modified:
+                        entry.Property("CreatedAt").IsModified = false;
+                        break;
                 }
             }
         }
