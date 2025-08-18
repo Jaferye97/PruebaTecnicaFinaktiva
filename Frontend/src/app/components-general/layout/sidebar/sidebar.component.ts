@@ -35,7 +35,7 @@ export class SidebarComponent {
         {
           title: 'Event Logs List',
           key: 'event-logs-list',
-          route: '',
+          route: 'eventLogs/',
         },
       ],
     },
