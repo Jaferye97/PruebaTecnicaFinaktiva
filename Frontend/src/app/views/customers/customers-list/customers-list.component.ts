@@ -76,6 +76,6 @@ export class CustomersListComponent implements OnInit {
   }
 
   onEditCustomer(customer: Customer) {
-    console.log('Editar cliente:', customer);
+    this.router.navigate(['/customers/edit', customer.id]);
   }
 }
