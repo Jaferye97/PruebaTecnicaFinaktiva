@@ -4,7 +4,9 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+
+import { GlobalErrorInterceptor } from '../core/interceptors/global-error.interceptor';
 
 import {
   DateAdapter,
@@ -39,5 +41,10 @@ export const appConfig: ApplicationConfig = {
     },
     { provide: MAT_DATE_LOCALE, useValue: 'en-CO' },
     MatNativeDateModule,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: GlobalErrorInterceptor,
+      multi: true,
+    },
   ],
 };
