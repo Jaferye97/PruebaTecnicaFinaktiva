@@ -30,7 +30,17 @@
       <section>
         <div class="d-flex justify-content-end mt-3">
           <button mat-button color="accent" (click)="onBack()">BACK</button>
-          <button mat-button color="primary" (click)="onSubmit()">SAVE</button>
+          <button mat-button color="primary" (click)="onSubmit()">
+            <mat-progress-spinner
+              *ngIf="isLoadingSave"
+              diameter="20"
+              mode="indeterminate"
+              color="primary"
+              class="mr-2"
+            >
+            </mat-progress-spinner>
+            <span *ngIf="!isLoadingSave">Save</span>
+          </button>
         </div>
       </section>
     </form>
