@@ -53,8 +53,8 @@ Este proyecto implementa una solución completa para la gestión de logs de even
     └── Adapters
         ├── In
         │   └── WebApi
-                ├── ActionFilters
-                └── Middlewares
+        │       ├── ActionFilters
+        │       └── Middlewares
         └── Out
             └── ReporitorySqlServer
 
@@ -120,3 +120,4 @@ ng serve
 📧 Mail: Andresjara0897@hotmail.com <br/>
 💼 GitHub: https://github.com/Jaferye97 <br/>
 🔗 LinkedIn: https://www.linkedin.com/in/yeimerjarafer/ <br/>
+
