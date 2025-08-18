@@ -14,6 +14,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { EventLogsListService } from '../services/eventLogsList.service';
 
 import { EventLog } from '../interfaces/eventLogsList';
+import { MatDialog } from '@angular/material/dialog';
+import { EventLogsAddComponent } from '../components/event-logs-add/event-logs-add.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-event-logs-list',
@@ -45,7 +48,11 @@ export class EventLogsListComponent implements OnInit, AfterViewInit {
   ];
   dataSource: MatTableDataSource<EventLog> = new MatTableDataSource();
 
-  constructor(private router: Router, private service: EventLogsListService) {}
+  constructor(
+    private service: EventLogsListService,
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
+  ) {}
 
   getDataCustomers(): void {
     this.loadingPage = true;
@@ -66,7 +73,17 @@ export class EventLogsListComponent implements OnInit, AfterViewInit {
   }
 
   onAddEventLog() {
-    console.log('Adding new event log');
-    // this.router.navigate(['/event-logs/add']);
+    const dialogRef = this.dialog.open(EventLogsAddComponent, {
+      width: '800px',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(result);
+      if (result) {
+        this.snackBar.open('Event Log saved successfully ✅', 'Cerrar', {
+          duration: 3000,
+        });
+      }
+    });
   }
 }
