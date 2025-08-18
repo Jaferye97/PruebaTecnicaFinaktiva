@@ -1,0 +1,38 @@
+<mat-card class="max-w-lg mx-auto mt-6 p-4">
+  <mat-card-title>Add Customer</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="form" class="p-3">
+      <section>
+        <div class="col-md-12">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" />
+            <mat-error *ngIf="form.get('name')?.hasError('required')">
+              Name is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-12 pt-2">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" />
+            <mat-error *ngIf="form.get('email')?.hasError('required')">
+              Email is required
+            </mat-error>
+            <mat-error *ngIf="form.get('email')?.hasError('email')">
+              Must be a valid email
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </section>
+
+      <section>
+        <div class="d-flex justify-content-end mt-3">
+          <button mat-button color="accent" (click)="onBack()">BACK</button>
+          <button mat-button color="primary" (click)="onSubmit()">SAVE</button>
+        </div>
+      </section>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -19,7 +19,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { CustomersListService } from '../services/customersList.service';
 
-import { Customer, CustomerForm } from '../interfaces/customersList';
+import { Customer } from '../interfaces/customersList';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-customers-list',
@@ -43,6 +44,7 @@ export class CustomersListComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
+    private router: Router,
     // private fb: FormBuilder,
     private service: CustomersListService // private dialog: MatDialog, // private snackBar: MatSnackBar
   ) {
@@ -70,7 +72,7 @@ export class CustomersListComponent implements OnInit {
   }
 
   onAddCustomer() {
-    console.log('Abrir modal para agregar cliente');
+    this.router.navigate(['/customers/add']);
   }
 
   onEditCustomer(customer: Customer) {
