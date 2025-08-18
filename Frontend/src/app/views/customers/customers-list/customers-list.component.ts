@@ -1,26 +1,18 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatSort, MatSortModule } from '@angular/material/sort';
+import { MatSort } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
-
-import { CommonModule } from '@angular/common';
-import { MatCardModule } from '@angular/material/card';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatInputModule } from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { FormBuilder, FormGroup } from '@angular/forms';
-
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { CustomersListService } from '../services/customersList.service';
 
 import { Customer } from '../interfaces/customersList';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-customers-list',
@@ -43,15 +35,7 @@ export class CustomersListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(
-    private router: Router,
-    // private fb: FormBuilder,
-    private service: CustomersListService // private dialog: MatDialog, // private snackBar: MatSnackBar
-  ) {
-    // this.form = this.fb.group({
-    //   search: [''],
-    // });
-  }
+  constructor(private router: Router, private service: CustomersListService) {}
 
   getDataCustomers(): void {
     this.loadingPage = true;
